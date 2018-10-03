@@ -13,3 +13,9 @@ Javascript plugins
 bootstrap.css
 #### 简介
 动态生成bootstrap分页, 用"..."隐藏过多的页
+
+## imglazy.js [README.md](imglazy/README.md)
+#### 依赖
+jQuery
+#### 简介
+图片懒加载
