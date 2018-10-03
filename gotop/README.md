@@ -18,7 +18,7 @@
   gotop.createButton({
     selector:window, //scroll容器
     scrollDuration:500, //滚动持续时间
-    class:"my-class", //botton class
+    class:"my-class", //button class
     iconClass:"fa fa-caret-up" //icon class 默认使用font-awesome 的caret-up 图标, 可自行改变
   })
 </script>
