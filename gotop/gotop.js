@@ -1,5 +1,5 @@
-function Gotop(options) {
-    options = options || {}
+;(function (undefined) {
+    "use strict";
     const animated = `
             .animated {
               -webkit-animation-duration: 1s;
@@ -128,62 +128,92 @@ function Gotop(options) {
             color: #409eff;
             opacity:0;`
 
-    let style = document.createElement('style')
-    style.innerHTML = animated
-    document.querySelector('head').appendChild(style)
+    let _global;
 
-    let div = document.createElement("div")
-    div.style.cssText = css
-    div.className = (options.class || "") + " animated"
-    div.onclick = function () {
-        let scrollDuration = options.scrollDuration || 500
-        let selector = options.selector
-        let element = selector && document.querySelector(selector) || window
-        let param = selector && 'scrollTop' || 'scrollY'
-        const scrollHeight = element[param]
-        const scrollStep = Math.PI / (scrollDuration / 15)
-        const cosParameter = scrollHeight / 2
-        let scrollCount = 0
-        let scrollMargin
-        let scrollInterval = setInterval(() => {
-            if (element[param] !== 0) {
-                scrollCount = scrollCount + 1
-                scrollMargin = cosParameter - cosParameter * Math.cos(scrollCount * scrollStep)
-                element.scrollTo(0, (scrollHeight - scrollMargin))
+    let button;
+    let created = false;
+    let plugin = {
+        createButton: function (options) {
+            if (created) {
+                console.log("Button created")
+                return;
+            }
+            options = options || {};
+            let style = document.createElement('style');
+            style.innerHTML = animated;
+            document.querySelector('head').appendChild(style);
+
+            button = document.createElement("div");
+            button.style.cssText = css;
+            button.className = (options.class || "") + " animated";
+            let scrollDuration = options.scrollDuration || 500;
+            let selector = options.selector;
+            button.onclick = function () {
+                plugin.scrollToTop(selector, scrollDuration);
+            };
+            let i = document.createElement("i");
+            i.className = options.iconClass || "fa fa-caret-up";
+            button.appendChild(i);
+            document.querySelector("body").appendChild(button);
+            plugin.addListener()
+            created = true;
+        },
+        scrollToTop: function (selector, scrollDuration) {
+            let element = selector && document.querySelector(selector) || window;
+            let param = selector && 'scrollTop' || 'scrollY';
+            const scrollHeight = element[param];
+            const scrollStep = Math.PI / (scrollDuration / 15);
+            const cosParameter = scrollHeight / 2;
+            let scrollCount = 0;
+            let scrollMargin;
+            let scrollInterval = setInterval(() => {
+                if (element[param] !== 0) {
+                    scrollCount = scrollCount + 1;
+                    scrollMargin = cosParameter - cosParameter * Math.cos(scrollCount * scrollStep);
+                    element.scrollTo(0, (scrollHeight - scrollMargin))
+                } else {
+                    clearInterval(scrollInterval)
+                }
+            }, 15)
+        },
+        addListener: function () {
+            let func = window.onscroll;
+            window.onscroll = function () {
+                if (typeof func === 'function') {
+                    func()
+                }
+                plugin.handleScroll()
+            };
+        },
+        handleScroll: function () {
+            if (!button) {
+                return;
+            }
+            let bodyScrollHeight = document.body.scrollTop || document.documentElement.scrollTop;
+            let windowHeight = window.innerHeight;
+            if (bodyScrollHeight > windowHeight / 2) {
+                if (button.className.indexOf("fadeInDown") === -1) {
+                    button.className = button.className.replace(/\s*fadeOutUp\s*/, "") + " fadeInDown";
+                }
             } else {
-                clearInterval(scrollInterval)
-            }
-        }, 15)
-    }
-    let i = document.createElement("i")
-    i.className = options.iconClass || "fa fa-caret-up"
-    div.appendChild(i)
-    document.querySelector("body").appendChild(div)
-
-    let isShow = false
-    function handleScroll() {
-        let bodyScrollHeight = document.body.scrollTop || document.documentElement.scrollTop
-        let windowHeight = window.innerHeight
-        if (bodyScrollHeight > windowHeight / 2) {
-            if (!isShow) {
-                isShow = true
-                div.className = div.className.replace(/\s*fadeOutUp\s*/, "") + " fadeInDown"
-            }
-        } else {
-            if (isShow) {
-                isShow = false
-                div.className = div.className.replace(/\s*fadeInDown\s*/, "") + " fadeOutUp"
+                if (button.className.indexOf("fadeInDown") >=0) {
+                    button.className = button.className.replace(/\s*fadeInDown\s*/, "") + " fadeOutUp";
+                }
             }
         }
-    }
+    };
 
-    let func = window.onscroll
-    window.onscroll = function () {
-        if (typeof func === 'function') {
-            func()
-        }
-        handleScroll()
+    _global = (function () {
+        return this || (0, eval)('this');
+    }());
+    if (typeof module !== "undefined" && module.exports) {
+        module.exports = plugin;
+    } else if (typeof define === "function" && define.amd) {
+        define(function () {
+            return plugin;
+        });
+    } else {
+        !('gotop' in _global) && (_global.gotop = plugin);
     }
-}
+}());
 
-Gotop()
