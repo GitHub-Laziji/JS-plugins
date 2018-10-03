@@ -9,7 +9,8 @@ jQuery
 #### 使用
 ##### 静态引人
 ```
-<img class="lazy" data-src="http://...}" src="./blank">
+// data-src 存放真实图片地址
+<img class="lazy" data-src="./image.png" src="./blank.png">
 <script src="imglazy.js"></script>
 
 <script>
