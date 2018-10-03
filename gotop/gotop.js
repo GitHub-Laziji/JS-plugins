@@ -1,3 +1,8 @@
+/**
+ * GitHub: https://github.com/GitHub-Laziji
+ * Author: Laziji
+ * Date: 2018/10/3
+ */
 ;(function (undefined) {
     "use strict";
     const animated = `
