@@ -1,6 +1,6 @@
 ## share.js
 
-![screenshot](share/screentshot1.png)
+![screenshot](screenshot1.png)
 ### 依赖
 Font Awesome
 ```
