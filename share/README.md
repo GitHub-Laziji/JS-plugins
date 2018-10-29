@@ -31,10 +31,10 @@ Font Awesome
   })
   
   //自动生成全部
-  AShare.createBar("#el")
+  AShare.createBar("#bar")
   
   //选择生成
-  AShare.createBar("#el", {
+  AShare.createBar("#bar", {
     sinaWeibo:true,
     qzone:true,
     renren:true
@@ -49,5 +49,5 @@ AShare.config({
   title:"app",
   content:"sssshare",
   picture:"i.png",
-}).createBar("#el")
+}).createBar("#bar")
 ```
