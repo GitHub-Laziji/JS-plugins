@@ -48,7 +48,7 @@
             icon: "renren",
             color: "mediumslateblue",
             name: "人人网",
-            event: function shareRenRen() {
+            event: function () {
                 openUrl({
                     url: "http://widget.renren.com/dialog/feed",
                     query: {
