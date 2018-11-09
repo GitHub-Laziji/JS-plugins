@@ -76,6 +76,7 @@
         },
         createBar: function (el, opt) {
             let element = document.querySelector(el);
+            let first = true;
             Object.keys(SHARE).map(k => {
                 if (opt && opt[k] === false) {
                     return;
@@ -94,13 +95,14 @@
                     justify-content: center;
                     align-items: center;
                     font-size: 20px;
-                    margin-left: 10px;`);
+                    margin-left: ${first ? 0 :10}px;`);
                 div.setAttribute("title",`分享到${data.name}`);
                 div.onclick = data.event;
                 element.appendChild(div);
                 let i = document.createElement("i");
                 i.className = `fa fa-${data.icon}`;
                 div.appendChild(i);
+                first = false;
             })
         },
         share: SHARE
