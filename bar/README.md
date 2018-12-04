@@ -2,8 +2,8 @@
 
 ![screenshot](screenshot1.png)
 ### 依赖
-Font Awesome
-Bootstrap Popovers
+- Font Awesome
+- Bootstrap Popovers
 ```
 <link href="http://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="http://cdn.staticfile.org/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
