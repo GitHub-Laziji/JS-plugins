@@ -12,6 +12,11 @@ Javascript plugins
 
 ## share.js [README.md](share/README.md)
 原生实现分享页面到微博, QQ, 人人...
+![screenshot](share/screenshot1.png)
 
 ## parse-csv.js
 解析.csv文件
+
+## bar.js
+自定义生成底部按钮栏, 可选按钮类型`回到顶部`, `显示图片按钮`, `转发到微博`
+![screenshot](bar/screenshot1.png)
