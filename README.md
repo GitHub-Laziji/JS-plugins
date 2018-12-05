@@ -22,8 +22,10 @@ Javascript plugins
 解析.csv文件
 
 ## bar.js [README.md](bar/README.md)
+
 ![screenshot](bar/screenshot1.png)
 
+可看作`gotop.js`的扩展
 
 自定义生成底部按钮栏, 可选按钮类型`回到顶部`, `显示图片按钮`, `转发到微博`
 
