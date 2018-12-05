@@ -43,7 +43,7 @@ ExBar.create({
     
     shareTitle: "iweb",                 //* 分享文章标题 默认为 document.title
     shareContent: "content",            //* 文章内容 默认为 <meta name='description'> 的内容  
-    shareImageUrl: "http://*.png"        //* 分享图片url http开头
+    shareImageUrl: "http://*.png"       //* 分享图片url 以http开头
   }]
 });
 ```
