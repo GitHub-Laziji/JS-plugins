@@ -17,6 +17,9 @@
 自定义生成底部按钮栏, 可选按钮类型`回到顶部`, `显示图片按钮`, `转发到微博`
 
 ### 使用
+图标来自 [http://www.fontawesome.com.cn/faicons/](http://www.fontawesome.com.cn/faicons/)
+
+图标名称对应属性`icon`, 例如`icon: 'star'`
 ```
 ExBar.create({
   // ! 必选属性 *可选属性
