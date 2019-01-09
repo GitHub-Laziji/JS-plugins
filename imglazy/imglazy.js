@@ -18,7 +18,7 @@
         },
         handleScroll: function () {
             let bodyScrollHeight = document.body.scrollTop || document.documentElement.scrollTop;
-            let windowHeight = window.innerWeight || document.documentElement.clientWidth || document.body.clientWidth;
+            let windowHeight = window.innerWeight || document.documentElement.clientHeight || document.body.clientHeight;
             let imgs = $("img[data-src]");
             if(!imgs||!imgs.length){
                 $(window).unbind("scroll",plugin.handleScroll);
